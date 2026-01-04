@@ -1,276 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Humair Kashan | Software Engineering Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-  <style>
-      :root {
-          --bg-color: #fdf6e3;
-          --accent: #ff6b35;
-          --secondary: #ffcf99;
-          --card-bg: #ffffff;
-          --text-main: #433422;
-          --border-radius: 30px;
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humair Kashan | Software Engineer</title>
+    <!-- Premium Serif and Sans Serif Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;500;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --bg-outer: #b4b8a1; /* Muted Sage/Olive from your images */
+            --bg-inner: #f4f3ee; /* Creamy Off-white */
+            --text-dark: #1a1c1a; /* Soft Charcoal */
+            --accent: #5e634d;    /* Deep Olive */
+            --border-radius: 40px;
+            --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
 
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Quicksand', sans-serif;
-      }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Bricolage Grotesque', sans-serif; 
+        }
 
-      body {
-          background-color: var(--bg-color);
-          color: var(--text-main);
-          line-height: 1.6;
-          scroll-behavior: smooth;
-      }
+        body { 
+            background-color: var(--bg-outer); 
+            color: var(--text-dark); 
+            padding: 20px; /* The "Frame" effect */
+            min-height: 100vh;
+        }
 
-      h1, h2, h3, .logo {
-          font-family: 'Fredoka', sans-serif;
-          color: var(--accent);
-      }
+        /* The Main Canvas Container */
+        .canvas {
+            background-color: var(--bg-inner);
+            border-radius: var(--border-radius);
+            min-height: calc(100vh - 40px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-      nav {
-          position: fixed;
-          width: 90%;
-          margin: 20px 5%;
-          padding: 1rem 2rem;
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(10px);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 1000;
-          border-radius: 50px;
-          box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-      }
-      .logo { font-size: 1.8rem; text-decoration: none; }
-      .nav-links a {
-          margin-left: 1.5rem;
-          text-decoration: none;
-          color: var(--text-main);
-          font-weight: 700;
-          transition: 0.3s;
-      }
-      .nav-links a:hover { color: var(--accent); transform: scale(1.1); }
+        /* Subtle Grain Overlay for Texture */
+        .canvas::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-      header {
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 0 10%;
-      }
-      header h1 { font-size: 5rem; line-height: 1; margin-bottom: 1rem; }
-      header p { font-size: 1.5rem; max-width: 700px; color: var(--text-main); }
-      .highlight { color: var(--accent); position: relative; }
+        /* Navigation */
+        nav { 
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 10;
+        }
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            letter-spacing: -1px;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+        .nav-links {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .nav-links a:hover { opacity: 0.5; transform: translateX(-5px); }
 
-      section { padding: 100px 10%; }
-      h2 { font-size: 3rem; margin-bottom: 2rem; text-align: center; }
+        /* Hero Section */
+        header {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            z-index: 2;
+        }
+        .hero-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        header h1 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            line-height: 1;
+            max-width: 900px;
+            font-weight: 500;
+            letter-spacing: -2px;
+        }
+        header h1 em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
 
-      .about-container {
-          background: var(--card-bg);
-          padding: 3rem;
-          border-radius: var(--border-radius);
-          box-shadow: 12px 12px 0px var(--secondary);
-          border: 3px solid var(--text-main);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 40px;
-      }
-      .edu-box {
-          background: var(--bg-color);
-          padding: 1.5rem;
-          border-radius: 20px;
-          margin-top: 1rem;
-          border-left: 8px solid var(--accent);
-      }
+        /* Content Sections */
+        section { padding: 100px 60px; z-index: 2; }
+        .section-header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 20px;
+        }
 
-      .project-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2.5rem;
-      }
-      .project-card {
-          background: var(--card-bg);
-          padding: 2.5rem;
-          border-radius: var(--border-radius);
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          border: 3px solid var(--text-main);
-          box-shadow: 8px 8px 0px var(--text-main);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-      }
-      .project-card:hover {
-          transform: translateY(-10px) rotate(-2deg);
-          box-shadow: 15px 15px 0px var(--accent);
-      }
-      .project-card h3 { margin-bottom: 1rem; font-size: 1.6rem; line-height: 1.2; }
+        /* Projects */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .project-item {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+            align-items: center;
+        }
+        .project-item:hover {
+            padding-left: 20px;
+            background-color: rgba(0,0,0,0.02);
+        }
+        .project-item h3 { font-size: 1.8rem; font-weight: 500; }
+        .project-item p { color: var(--accent); font-size: 0.9rem; }
+        .project-tag { font-size: 0.7rem; text-transform: uppercase; text-align: right; }
 
-      .contact-card {
-          max-width: 700px;
-          margin: 0 auto;
-          background: var(--accent);
-          padding: 3rem;
-          border-radius: var(--border-radius);
-          color: white;
-          box-shadow: 10px 10px 0px var(--text-main);
-      }
-      .contact-card h2 { color: white; margin-bottom: 1rem; }
-      input, textarea {
-          padding: 1.2rem;
-          border-radius: 15px;
-          border: 3px solid var(--text-main);
-          background: white;
-          width: 100%;
-          margin-bottom: 1rem;
-          font-size: 1rem;
-      }
-      button {
-          padding: 1rem 2.5rem;
-          background: var(--text-main);
-          color: white;
-          border: none;
-          border-radius: 50px;
-          font-weight: bold;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: 0.3s;
-      }
-      button:hover {
-          transform: scale(1.05);
-          background: #000;
-      }
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--accent);
+            color: var(--bg-inner);
+            padding: 80px;
+            border-radius: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-box h2 { font-size: 3rem; font-family: 'Instrument Serif', serif; }
+        input, textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding: 15px 0;
+            width: 100%;
+            color: white;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        .submit-btn {
+            background: var(--bg-inner);
+            color: var(--text-dark);
+            padding: 15px 40px;
+            border-radius: 100px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
-      footer {
-          padding: 50px 10%;
-          text-align: center;
-          background: var(--secondary);
-          border-top: 4px solid var(--text-main);
-      }
-      .socials { font-size: 2.5rem; margin-bottom: 1.5rem; }
-      .socials a {
-          color: var(--text-main);
-          margin: 0 20px;
-          transition: 0.3s;
-          display: inline-block;
-      }
-      .socials a:hover {
-          color: var(--accent);
-          transform: scale(1.3) rotate(10deg);
-      }
+        footer {
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        .social-links a {
+            color: var(--text-dark);
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover { color: var(--accent); }
 
-      @media (max-width: 768px) {
-          .about-container { grid-template-columns: 1fr; }
-          header h1 { font-size: 3rem; }
-      }
-  </style>
+        @media (max-width: 768px) {
+            nav, section, footer { padding: 30px; }
+            .project-item { grid-template-columns: 1fr; gap: 10px; }
+            .contact-box { grid-template-columns: 1fr; padding: 40px; }
+            header h1 { font-size: 3rem; }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">H.KASHAN</a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+    <main class="canvas">
+        <nav>
+            <a href="#" class="logo">HUMAIR KASHAN</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Work</a>
+                <a href="#contact">Contact</a>
+                <a href="https://www.linkedin.com/in/humair-kashan-b8b257261" target="_blank">LinkedIn</a>
+            </div>
+        </nav>
 
-<header>
-  <p>Software Engineering Student | Cybersecurity & Systems Programming</p>
-  <h1>I build <span class="highlight">secure systems</span> for the digital world.</h1>
-  <p>I focus on developing performant, engineering-driven solutions using Rust, while maintaining a commitment to clean design and rigorous security standards.</p>
-</header>
+        <header>
+            <span class="hero-label">Software Engineer & Security Researcher</span>
+            <h1>Building <em>secure</em> systems that leave a <em>lasting</em> impression.</h1>
+        </header>
 
-<section id="about">
-  <h2>Who Am I?</h2>
-  <div class="about-container">
-    <div>
-      <p style="font-size: 1.1rem;">
-        I am a final-year Software Engineering student with a strong specialization in cybersecurity, system-level programming, and backend development.
-      </p>
-      <br>
-      <p>
-        I find fulfillment in well-structured code and creating projects that solve technical challenges with precision. My journey is defined by a deep-seated curiosity, technical discipline, and a focus on long-term learning within the engineering space.
-      </p>
-      <br>
-      <p><strong>Current Goal:</strong> Building strong foundations in cybersecurity, Rust, and distributed systems while preparing for industry-level roles.</p>
-    </div>
-    <div>
-      <h3 style="color: var(--text-main);">Education</h3>
-      <div class="edu-box">
-        <strong>BSc Software Engineering</strong>
-        <p>University of Stirling | 2022 - 2026</p>
-      </div>
-      <div class="edu-box">
-        <strong>Professional Certifications</strong>
-        <p>Relevant coursework via Coursera, IBM, and Meta.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <section id="about">
+            <div class="section-header">01 / IDENTITY</div>
+            <div style="max-width: 700px; font-size: 1.4rem; line-height: 1.4;">
+                <p>I am a Software Engineering student focused on low-level systems and cybersecurity. I believe in code that speaks like a person—clear, intentional, and without unnecessary noise.</p>
+                <br>
+                <p style="font-size: 1rem; color: var(--accent);">Currently mastering Rust and Distributed Systems at the University of Stirling.</p>
+            </div>
+        </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="project-grid">
-    <div class="project-card">
-      <div>
-        <h3>🛡️ Network Intrusion Detection System</h3>
-        <p>A hybrid system combining a Rust-based packet sniffer with Python machine-learning models to detect anomalous network behavior.</p>
-      </div>
-      <br>
-      <a href="https://github.com/HumairKashan/Network-Intrusion-Detection-Systems-NIDS-" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: bold; text-decoration: none;">Check it out →</a>
-    </div>
-    <div class="project-card">
-      <div>
-        <h3>🔍 Rust Log Sentinel</h3>
-        <p>A high-performance log analysis tool written in Rust designed to detect suspicious patterns, brute-force attempts, and system anomalies.</p>
-      </div>
-      <br>
-      <a href="https://github.com/HumairKashan/Sentinel" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: bold; text-decoration: none;">Check it out →</a>
-    </div>
-    <div class="project-card">
-      <div>
-        <h3>⏳ timekit (Rust Library)</h3>
-        <p>A clean Rust utility library for parsing and formatting human-readable time durations, with a focus on API design and correctness.</p>
-      </div>
-      <br>
-      <a href="https://github.com/HumairKashan/timekit" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: bold; text-decoration: none;">Check it out →</a>
-    </div>
-  </div>
-</section>
+        <section id="projects">
+            <div class="section-header">02 / SELECTED WORK</div>
+            <div class="project-list">
+                <a href="https://github.com/HumairKashan/Network-Intrusion-Detection-Systems-NIDS-" class="project-item" target="_blank">
+                    <h3>Network IDS</h3>
+                    <p>Hybrid Rust & ML intrusion detection system.</p>
+                    <span class="project-tag">Security / Rust</span>
+                </a>
+                <a href="https://github.com/HumairKashan/Sentinel" class="project-item" target="_blank">
+                    <h3>Log Sentinel</h3>
+                    <p>High-performance system anomaly detection.</p>
+                    <span class="project-tag">Systems / Rust</span>
+                </a>
+                <a href="https://github.com/HumairKashan/timekit" class="project-item" target="_blank">
+                    <h3>TimeKit</h3>
+                    <p>Human-readable duration parser for Rust.</p>
+                    <span class="project-tag">Utility / Open Source</span>
+                </a>
+            </div>
+        </section>
 
-<section id="contact">
-  <div class="contact-card">
-    <h2>Get In Touch</h2>
-    <p>I am always open to discussing new opportunities or technical collaborations. Drop me a message below!</p>
-    <br>
-    <form action="[PASTE YOUR FORMSPREE LINK HERE]" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
-      <button type="submit">Send Message ✨</button>
-    </form>
-  </div>
-</section>
+        <section id="contact">
+            <div class="contact-box">
+                <div>
+                    <h2>Let's build something meaningful...</h2>
+                    <p style="margin-top: 20px; opacity: 0.8;">Available for security consulting and software collaborations.</p>
+                </div>
+                <form name="contact" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
 
-<footer>
-  <div class="socials">
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-  </div>
-  <p>&copy; 2024 Humair Kashan</p>
-</footer>
+        <footer>
+            <p>&copy; 2026 Humair Kashan — All Rights Reserved</p>
+            <div class="social-links">
+                <a href="https://github.com/HumairKashan" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/humair-kashan-b8b257261" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </footer>
+    </main>
 
 </body>
 </html>
