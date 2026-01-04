@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humair Kashan | Software Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+      :root {
+          --bg-color: #fdf6e3;
+          --accent: #ff6b35;
+          --secondary: #ffcf99;
+          --card-bg: #ffffff;
+          --text-main: #433422;
+          --border-radius: 30px;
+      }
+
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Quicksand', sans-serif;
+      }
+
+      body {
+          background-color: var(--bg-color);
+          color: var(--text-main);
+          line-height: 1.6;
+          scroll-behavior: smooth;
+      }
+
+      h1, h2, h3, .logo {
+          font-family: 'Fredoka', sans-serif;
+          color: var(--accent);
+      }
+
+      nav {
+          position: fixed;
+          width: 90%;
+          margin: 20px 5%;
+          padding: 1rem 2rem;
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(10px);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 1000;
+          border-radius: 50px;
+          box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+      }
+      .logo { font-size: 1.8rem; text-decoration: none; }
+      .nav-links a {
+          margin-left: 1.5rem;
+          text-decoration: none;
+          color: var(--text-main);
+          font-weight: 700;
+          transition: 0.3s;
+      }
+      .nav-links a:hover { color: var(--accent); transform: scale(1.1); }
+
+      header {
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 0 10%;
+      }
+      header h1 { font-size: 5rem; line-height: 1; margin-bottom: 1rem; }
+      header p { font-size: 1.5rem; max-width: 700px; color: var(--text-main); }
+      .highlight { color: var(--accent); position: relative; }
+
+      section { padding: 100px 10%; }
+      h2 { font-size: 3rem; margin-bottom: 2rem; text-align: center; }
+
+      .about-container {
+          background: var(--card-bg);
+          padding: 3rem;
+          border-radius: var(--border-radius);
+          box-shadow: 12px 12px 0px var(--secondary);
+          border: 3px solid var(--text-main);
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+      }
+      .edu-box {
+          background: var(--bg-color);
+          padding: 1.5rem;
+          border-radius: 20px;
+          margin-top: 1rem;
+          border-left: 8px solid var(--accent);
+      }
+
+      .project-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2.5rem;
+      }
+      .project-card {
+          background: var(--card-bg);
+          padding: 2.5rem;
+          border-radius: var(--border-radius);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          border: 3px solid var(--text-main);
+          box-shadow: 8px 8px 0px var(--text-main);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+      .project-card:hover {
+          transform: translateY(-10px) rotate(-2deg);
+          box-shadow: 15px 15px 0px var(--accent);
+      }
+      .project-card h3 { margin-bottom: 1rem; font-size: 1.6rem; line-height: 1.2; }
+
+      .contact-card {
+          max-width: 700px;
+          margin: 0 auto;
+          background: var(--accent);
+          padding: 3rem;
+          border-radius: var(--border-radius);
+          color: white;
+          box-shadow: 10px 10px 0px var(--text-main);
+      }
+      .contact-card h2 { color: white; margin-bottom: 1rem; }
+      input, textarea {
+          padding: 1.2rem;
+          border-radius: 15px;
+          border: 3px solid var(--text-main);
+          background: white;
+          width: 100%;
+          margin-bottom: 1rem;
+          font-size: 1rem;
+      }
+      button {
+          padding: 1rem 2.5rem;
+          background: var(--text-main);
+          color: white;
+          border: none;
+          border-radius: 50px;
+          font-weight: bold;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: 0.3s;
+      }
+      button:hover {
+          transform: scale(1.05);
+          background: #000;
+      }
+
+      footer {
+          padding: 50px 10%;
+          text-align: center;
+          background: var(--secondary);
+          border-top: 4px solid var(--text-main);
+      }
+      .socials { font-size: 2.5rem; margin-bottom: 1.5rem; }
+      .socials a {
+          color: var(--text-main);
+          margin: 0 20px;
+          transition: 0.3s;
+          display: inline-block;
+      }
+      .socials a:hover {
+          color: var(--accent);
+          transform: scale(1.3) rotate(10deg);
+      }
+
+      @media (max-width: 768px) {
+          .about-container { grid-template-columns: 1fr; }
+          header h1 { font-size: 3rem; }
+      }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">H.KASHAN</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header>
+  <p>Software Engineering Student | Cybersecurity & Systems Programming</p>
+  <h1>I build <span class="highlight">secure systems</span> for the digital world.</h1>
+  <p>I focus on developing performant, engineering-driven solutions using Rust, while maintaining a commitment to clean design and rigorous security standards.</p>
+</header>
+
+<section id="about">
+  <h2>Who Am I?</h2>
+  <div class="about-container">
+    <div>
+      <p style="font-size: 1.1rem;">
+        I am a final-year Software Engineering student with a strong specialization in cybersecurity, system-level programming, and backend development.
+      </p>
+      <br>
+      <p>
+        I find fulfillment in well-structured code and creating projects that solve technical challenges with precision. My journey is defined by a deep-seated curiosity, technical discipline, and a focus on long-term learning within the engineering space.
+      </p>
+      <br>
+      <p><strong>Current Goal:</strong> Building strong foundations in cybersecurity, Rust, and distributed systems while preparing for industry-level roles.</p>
+    </div>
+    <div>
+      <h3 style="color: var(--text-main);">Education</h3>
+      <div class="edu-box">
+        <strong>BSc Software Engineering</strong>
+        <p>University of Stirling | 2022 - 2026</p>
+      </div>
+      <div class="edu-box">
+        <strong>Professional Certifications</strong>
+        <p>Relevant coursework via Coursera, IBM, and Meta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <div>
+        <h3>🛡️ Network Intrusion Detection System</h3>
+        <p>A hybrid system combining a Rust-based packet sniffer with Python machine-learning models to detect anomalous network behavior.</p>
+      </div>
+      <br>
+      <a href="https://github.com/HumairKashan/Network-Intrusion-Detection-Systems-NIDS-" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: bold; text-decoration: none;">Check it out →</a>
+    </div>
+    <div class="project-card">
+      <div>
+        <h3>🔍 Rust Log Sentinel</h3>
+        <p>A high-performance log analysis tool written in Rust designed to detect suspicious patterns, brute-force attempts, and system anomalies.</p>
+      </div>
+      <br>
+      <a href="https://github.com/HumairKashan/Sentinel" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: bold; text-decoration: none;">Check it out →</a>
+    </div>
+    <div class="project-card">
+      <div>
+        <h3>⏳ timekit (Rust Library)</h3>
+        <p>A clean Rust utility library for parsing and formatting human-readable time durations, with a focus on API design and correctness.</p>
+      </div>
+      <br>
+      <a href="https://github.com/HumairKashan/timekit" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: bold; text-decoration: none;">Check it out →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-card">
+    <h2>Get In Touch</h2>
+    <p>I am always open to discussing new opportunities or technical collaborations. Drop me a message below!</p>
+    <br>
+    <form action="[PASTE YOUR FORMSPREE LINK HERE]" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
+      <button type="submit">Send Message ✨</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="socials">
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+  <p>&copy; 2024 Humair Kashan</p>
+</footer>
+
+</body>
+</html>
